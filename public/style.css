@@ -1,3 +1,22 @@
 body {
     background-color: salmon;
 }
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+.content{
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+.footer, .push {
+    height: 50px;
+}
+.footer {
+    background-color: #474747;
+}
+.footer_container {
+    margin-left: 100px;
+    padding-top: 15px;
+    color: #dbdbdb;
+}
