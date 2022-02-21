@@ -2,5 +2,5 @@
 
 
 @section('container')
-    <h1>Halaman Course</h1>
+    <h1>Halaman Profile</h1>
 @endsection
