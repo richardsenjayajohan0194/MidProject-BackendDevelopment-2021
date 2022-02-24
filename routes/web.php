@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,12 +28,18 @@ Route::get('/about', function () {
 });
 
 Route::get('/course', function () {
+    if(!(session()->has('current_user'))){
+        return redirect('/login');
+    }
     return view('course', [
         "title" => "Course"
     ]);
 });
 
 Route::get('/profile', function () {
+    if(!(session()->has('current_user'))){
+        return redirect('/login');
+    }
     return view('profile', [
         "title" => "Profile"
     ]);
@@ -45,3 +52,22 @@ Route::get('/register', function () {
 });
 
 Route::post('/register', [RegisterController::class, 'addData']);
+
+Route::get('/login', function () {
+    if(session()->has('current_user')){
+        return redirect('/');
+    }
+    return view('login', [
+        "title" => "Login",
+        "truth" => 0
+    ]);
+});
+
+Route::post('/login', [LoginController::class, 'userLogin']);
+
+Route::get('/logout', function () {
+    if(session()->has('current_user')){
+        session()->pull('current_user');
+    }
+    return redirect('/login');
+});

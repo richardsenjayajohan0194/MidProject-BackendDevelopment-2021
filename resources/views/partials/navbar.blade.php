@@ -15,7 +15,18 @@
           <li class="nav-item">
             <a class="nav-link {{ ($title === "About") ? 'active' : '' }}" href="/about">About</a>
           </li>
+          <li class="nav-item">
+            <?php if(session()->has('current_user')) : ?>
+                <!--- <span style="color:#92e7e8"> </span><br> --->
+                <span style="color:#92e7e8"> {{ session('current_user') }} </span><br>
+                <a href="/logout">Logout</a>;
+            <?php else : ?>
+                <a class="nav-link {{ ($title === "Login") ? 'active' : '' }}" href="/login">Login</a>
+            <?php endif; ?>
+
+          </li>
           </ul>
+
       </div>
     </div>
   </nav>

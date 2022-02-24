@@ -30,6 +30,6 @@ class RegisterController extends Controller
         $user->age=$req->age;
         $user->birthdate=$req->birthdate;
         $user->save();
-        return redirect('/register');
+        return redirect('/login');
     }
 }
