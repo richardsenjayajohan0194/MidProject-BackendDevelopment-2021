@@ -15,6 +15,9 @@ class LoginController extends Controller
 
         $cari = $req->user_name;
         $user = DB::table('users')->where('user_name', $cari)->first();
+        if ($user == NULL){
+            return view('/login', ["title" => "Login", "truth" => 1]);
+        }
         $pass = $req->password;
         if ((strcmp($pass, $user->password)) == 0){
             //$tempname = $user->user_name;

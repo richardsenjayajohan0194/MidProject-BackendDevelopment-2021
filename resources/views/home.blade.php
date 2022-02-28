@@ -18,15 +18,19 @@
         <?php if($user->course4) : ?>
             <li><a href="/courses/Kimia">Kimia</a></li>
         <?php endif; ?>
+        </ul>
+        <hr>
     <?php endif; ?>
 
     <h2>Popular Course</h2>
     <ul>
-        <li><a href="/course/Matematika%20Wajib">Matematika Wajib</a></li>
-        <li><a href="/course/Fisika">Fisika</a></li>
+        <li><a href="/courses/Matematika%20Wajib">Matematika Wajib</a></li>
+        <li><a href="/courses/Fisika">Fisika</a></li>
     </ul>
-
+    <hr>
     <h2>Kenapa memilih Midas Learning?</h2>
     <!--- Isi keunggulan website--->
-
+        <h5>1. Materi disajikan dengan menarik</h5>
+        <h5>2. Pemahaman mengenai materi yang diberikan mudah dimengerti</h5>
+        <h5>3. Hasil testimoni memuaskan</h5>
 @endsection

@@ -13,7 +13,7 @@ class RegisterController extends Controller
         $req->validate([
             'full_name' => 'nullable|min:10|max:45',
             'user_name' => 'required|unique:users|min:3|max:15',
-            'password' => ['required', 'unique:users', 'min:8', 'max:20', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/', 'regex:/[@$!%*#?&]/'],
+            'password' => ['required', 'min:8', 'max:20', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/', 'regex:/[@$!%*#?&]/'],
             'confirm_password' => 'required|same:password',
             'address' => 'nullable',
             'phone_number' => 'nullable',
