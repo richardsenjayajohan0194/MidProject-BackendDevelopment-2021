@@ -1,8 +1,12 @@
 <?php
 
+use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EnrollController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +19,7 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        "title" => "Home"
-    ]);
-});
+Route::get('/', [HomeController::class, 'searchUser']);
 
 Route::get('/about', function () {
     return view('about', [
@@ -32,18 +32,40 @@ Route::get('/course', function () {
         return redirect('/login');
     }
     return view('course', [
-        "title" => "Course"
+        "title" => "Course",
+        "courses" => Course::all()
     ]);
 });
+
+//halaman single post (course)
+Route::get('courses/{slug}', function($slug) {
+    if(!(session()->has('current_user'))){
+        return redirect('/login');
+    }
+    return view('courses', [
+         "title" => "Course",
+         "course" => Course::find($slug)
+      ]);
+});
+
+//route to enroll controller
+Route::post('courses/1', [EnrollController::class, 'enroll1']);
+
+Route::post('courses/2', [EnrollController::class, 'enroll2']);
+
+Route::post('courses/3', [EnrollController::class, 'enroll3']);
+
+Route::post('courses/4', [EnrollController::class, 'enroll4']);
+
+
 
 Route::get('/profile', function () {
     if(!(session()->has('current_user'))){
         return redirect('/login');
     }
-    return view('profile', [
-        "title" => "Profile"
-    ]);
+    return app(ProfileController::class)->userProfile();
 });
+
 
 Route::get('/register', function () {
     return view('register', [
